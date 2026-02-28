@@ -59,6 +59,12 @@ def scan_handler():
     else:
         device = "💻 Computer"
 
+    # REAL IP FIX
+    forwarded_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+    real_ip = forwarded_ip.split(",")[0]    
+
+        
+
     # Telegram message
     msg = f"""
 <b>🔔 {BOT_NAME} Alert!</b>
@@ -66,7 +72,7 @@ def scan_handler():
 📍 <b>Status:</b> NFC Tag Scanned
 ⏰ <b>Time:</b> {now}
 📱 <b>Device:</b> {device}
-🌐 <b>IP:</b> {request.remote_addr}
+🌐 <b>IP:</b> {real_ip}
 ━━━━━━━━━━━━━━━
 """
 
