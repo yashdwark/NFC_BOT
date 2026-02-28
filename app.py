@@ -30,6 +30,14 @@ def send_telegram_msg(message):
     except Exception as e:
         print("Telegram Error:", e)
 
+# ===== HOME PAGE (when someone opens main link) =====
+@app.route('/')
+def home():
+    return """
+    <h2 style="font-family:Arial;text-align:center;margin-top:80px;">
+    NFC Bot is running successfully ✅
+    </h2>
+    """
 
 # ================= NFC SCAN PAGE =================
 # THIS IS THE LINK YOU WILL WRITE INTO NFC
