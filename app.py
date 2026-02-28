@@ -1,5 +1,6 @@
 import datetime
 import requests
+import pytz
 from flask import Flask, request, redirect
 
 app = Flask(__name__)
@@ -45,7 +46,8 @@ def home():
 def scan_handler():
 
     # Time
-    now = datetime.datetime.now().strftime("%I:%M %p | %d %b %Y")
+    ist = pytz.timezone('Asia/Kolkata')
+    now = datetime.datetime.now(ist).strftime("%I:%M %p | %d %b %Y")
 
     # Device detection
     user_agent = request.headers.get('User-Agent', 'Unknown')
